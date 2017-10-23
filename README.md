@@ -1,6 +1,6 @@
 # DMS Example
 
-## Creates an example DMS system for replicating an (on-prem) Oracle database to a cloud-based Postgres database.
+## Creates an example AWS DMS for replicating an (on-prem) Oracle database to a cloud-based Postgres database.
 
 ### terraform-main
 This will create:
