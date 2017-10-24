@@ -22,7 +22,7 @@ terraform {
   backend "s3" {
     # This is an s3bucket you will need to create in your aws 
     # space
-    bucket = "tfstate-701941925126-db"
+    bucket = "tfstate-db"
 
     # The key should be unique to each stack, because we want to
     # have multiple enviornments alongside each other we set
@@ -184,7 +184,7 @@ variable "source_backup_window" {
 
 variable "source_db_name" {
   description = "Password of the target database"
-  default     = "ORCL"
+  default     = "ORACLE"
 }
 
 variable "source_db_port" {

@@ -15,9 +15,7 @@ resource "aws_dms_replication_instance" "link" {
   replication_instance_class   = "${var.replication_instance_class}"
   replication_instance_id      = "dms-replication-instance-tf"
   replication_subnet_group_id  = "${aws_dms_replication_subnet_group.dms.id}"
-
-  #vpc_security_group_ids       = ["${var.rds_sg_id}"]
-  vpc_security_group_ids = ["${aws_security_group.rds.id}"]
+  vpc_security_group_ids       = ["${aws_security_group.rds.id}"]
 
   tags {
     Name        = "${var.stack_name}-dms-${var.environment}-${lookup(var.availability_zones, count.index)}"
@@ -32,7 +30,5 @@ resource "aws_dms_replication_instance" "link" {
 resource "aws_dms_replication_subnet_group" "dms" {
   replication_subnet_group_description = "DMS replication subnet group"
   replication_subnet_group_id          = "dms-replication-subnet-group-tf"
-
-  #subnet_ids                           = ["${var.rds_subnet_ids}"]
-  subnet_ids = ["${aws_subnet.database.*.id}"]
+  subnet_ids                           = ["${aws_subnet.database.*.id}"]
 }
